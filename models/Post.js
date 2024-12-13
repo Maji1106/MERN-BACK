@@ -1,10 +1,25 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const Post = new Schema({
-  Username: { Types: String, required: true, unique: true, min: 4 },
-  password: { type: String, require: true },
+const PostSchema = new Schema({
+  title: {
+    type: String,
+    require: true,
+  },
+  summary: {
+    type: String,
+    require: true,
+  },
+  content: {
+    type: String,
+    require: true,
+  },
+  cover: {
+    type: String,
+    require: true,
+  },
+  author: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-const UserModel = model("User", UserSchema);
-module.exports = UserModel;
+const PostModel = model("Post", PostSchema);
+module.exports = PostModel;
